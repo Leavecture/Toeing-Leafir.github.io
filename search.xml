@@ -77,4 +77,31 @@
         <tag>ICPC</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Java连接Sql-Server的一些问题</title>
+    <url>/2020/12/16/Java%E8%BF%9E%E6%8E%A5SqlServer%E7%9A%84%E8%8B%A5%E5%B9%B2%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E7%AD%94/</url>
+    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDB</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Connection conn;</span><br><span class="line">    <span class="keyword">private</span> Statement stat;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyDB</span><span class="params">(String DBName)</span> <span class="keyword">throws</span> SQLException, ClassNotFoundException</span>&#123;</span><br><span class="line">        Class.forName(<span class="string">&quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot;</span>);</span><br><span class="line">        conn = DriverManager.getConnection(<span class="string">&quot;jdbc:sqlserver://localhost:1433;DatabaseName = student; user = sa; password = 123456&quot;</span>);</span><br><span class="line">        stat = conn.createStatemeng();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">()</span> <span class="keyword">throws</span> SQLException, ClassNotFoundException</span>&#123;</span><br><span class="line">        MyDB = <span class="keyword">new</span> MyDB(<span class="string">&quot;student&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码是一个连接Sql的一个模板， 但最初在运行时遇到了两个问题</p>
+<h3 id="TCP-IP未启动"><a href="#TCP-IP未启动" class="headerlink" title="TCP/IP未启动"></a>TCP/IP未启动</h3><p>Run之后出来一大段红字， 大概就是说访问 1433 failed了</p>
+<p>于是到处找资料…</p>
+<p>解决方法： 在SQL Server 配置管理器中</p>
+<p>将使用的服务器(因为可能电脑上不止一个Sql服务器)的管理器， 将</p>
+<p><strong>网络配置</strong>中相应服务器的<strong>TCP/IP</strong>启用即可。</p>
+<p>当我开心地Run之后…发现这个问题的确是没了， 变成了……</p>
+<h3 id="用户sa登录失败"><a href="#用户sa登录失败" class="headerlink" title="用户sa登录失败"></a>用户sa登录失败</h3><p>QAQ！</p>
+<p>又是问老师又是找各种资料， 倒腾dos命令和管理器qaq</p>
+<p>最后发现是因为…</p>
+<p>不知道为什么我的SqlServer服务器<strong>使用的TCP端口并不是默认的1433</strong>而是另外的数字…</p>
+<p>突然发现这点之后把代码中的端口改成了对应的数字就解决了…</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>SqlServer</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>SqlServer</tag>
+      </tags>
+  </entry>
 </search>

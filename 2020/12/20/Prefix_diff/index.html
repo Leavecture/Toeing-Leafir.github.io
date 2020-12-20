@@ -70,7 +70,7 @@
 <p>$ 0 &lt; la, lb, lc, ra, rb, rc &lt; 1e6 $</p>
 <p>$0 &lt; h, d(i, j, k) &lt; 1e9$ </p>
 <p>其中 $d(i, j, k)$ 表示序列中第 $((i-1)\times B + (j-1))\times C + k $  个数。</p>
-<p>$Time Limited:$ $2000ms$ </p>
+<p>$Time Limited:$ $5000ms$ </p>
 <h4 id="题意分析-amp-做法分析："><a href="#题意分析-amp-做法分析：" class="headerlink" title="题意分析 &amp; 做法分析："></a>题意分析 &amp; 做法分析：</h4><p>题目即对一个三维数组进行区间操作，由于其区间操作比较特殊(由两个点确定的小矩阵)，不难想到通过三维差分来在常数阶时间内实现区间修改，考虑朴素做法：</p>
 <p>遍历m次操作, 每次操作后求前缀和查看是否有负数。</p>
 <p>复杂度$ O(ABCm) $ $1e12$ 显然 $TLE$ </p>

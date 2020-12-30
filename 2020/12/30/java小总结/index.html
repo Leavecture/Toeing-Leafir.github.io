@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>关于Java Swing组件、线程、数据库操作、文件OI - Leaf&#39;s Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Leaf,"> 
+    <meta name="description" content="已经有在加油啦。,1.Swing界面基本内容a. 基本Frame设置 &amp;amp; 布局12345678910public MyFrame()&amp;#123;    super(&amp;quot;Sno&amp;quot;);    t,"> 
+    <meta name="author" content="Toeing_LeafIr"> 
+    <link rel="alternative" href="atom.xml" title="Leaf&#39;s Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/logo_.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Leaf&#39;s Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://toeing-leafir.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">关于Java Swing组件、线程、数据库操作、文件OI</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">关于Java Swing组件、线程、数据库操作、文件OI</h1>
+        <div class="stuff">
+            <span>十二月 30, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h2 id="1-Swing界面基本内容"><a href="#1-Swing界面基本内容" class="headerlink" title="1.Swing界面基本内容"></a>1.Swing界面基本内容</h2><h4 id="a-基本Frame设置-amp-布局"><a href="#a-基本Frame设置-amp-布局" class="headerlink" title="a. 基本Frame设置 &amp; 布局"></a>a. 基本Frame设置 &amp; 布局</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyFrame</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(<span class="string">&quot;Sno&quot;</span>);</span><br><span class="line">    <span class="keyword">this</span>.setSize(<span class="number">800</span>, <span class="number">400</span>);</span><br><span class="line">    <span class="keyword">this</span>.setLayout(<span class="keyword">new</span> BorderLayout());</span><br><span class="line">    <span class="keyword">this</span>.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.setVisible(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="b-JComboBox-下拉框-amp-JRadioButton-点状选择按钮"><a href="#b-JComboBox-下拉框-amp-JRadioButton-点状选择按钮" class="headerlink" title="b.  JComboBox 下拉框 &amp; JRadioButton 点状选择按钮"></a>b.  JComboBox 下拉框 &amp; JRadioButton 点状选择按钮</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String[] sdepts = &#123;<span class="string">&quot;计算机&quot;</span>, <span class="string">&quot;数媒&quot;</span>, <span class="string">&quot;软工&quot;</span>&#125;;</span><br><span class="line"><span class="keyword">private</span> JComboBox&lt;String&gt; sdept = <span class="keyword">new</span> JComboBox&lt;String&gt;(sdepts);</span><br><span class="line"><span class="keyword">private</span> ButtonGroup bg = <span class="keyword">new</span> ButtonGroup();</span><br><span class="line"><span class="keyword">private</span> String[] sexes = &#123;<span class="string">&quot;男&quot;</span>, <span class="string">&quot;女&quot;</span>&#125;;</span><br><span class="line"><span class="keyword">private</span> JRadioButton[] sex = <span class="keyword">new</span> JRadioButton[sexes.length];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyFrame</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    <span class="keyword">this</span>.add(sdept, <span class="string">&quot;South&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sexes.length; i++)&#123;</span><br><span class="line">        sex[i] = <span class="keyword">new</span> JRadioButton(sexes[i]);</span><br><span class="line">        bg.add(sex[i]);</span><br><span class="line">        <span class="keyword">this</span>.add(sex[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="c-JList-amp-its-DModel-dlist"><a href="#c-JList-amp-its-DModel-dlist" class="headerlink" title="c. JList &amp; its DModel(dlist)"></a>c. JList &amp; its DModel(dlist)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> DefaultListModel&lt;String&gt; dlist = <span class="keyword">new</span> DefaultListModel&lt;String&gt;();</span><br><span class="line"><span class="keyword">private</span> JList&lt;String&gt; jlist = <span class="keyword">new</span> JList&lt;String&gt;(dlist);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyFrame</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    <span class="keyword">this</span>.add(jlist, <span class="string">&quot;Center&quot;</span>);</span><br><span class="line">    dlist.add(idx, Str);<span class="comment">//在第idx个位置上插入一条str</span></span><br><span class="line">    &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="d-JTable-amp-its-DModel-dtable"><a href="#d-JTable-amp-its-DModel-dtable" class="headerlink" title="d. JTable &amp; its DModel(dtable)"></a>d. JTable &amp; its DModel(dtable)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String[] row = &#123;<span class="string">&quot;学号&quot;</span>, <span class="string">&quot;姓名&quot;</span>, <span class="string">&quot;专业&quot;</span>, <span class="string">&quot;性别&quot;</span>&#125;;</span><br><span class="line"><span class="keyword">private</span> DefaultTableModel dtable = <span class="keyword">new</span> DefaultTableModel(row, <span class="number">0</span>);</span><br><span class="line"><span class="comment">//以row为表头, 第二个参数为初始行数（容量）</span></span><br><span class="line"><span class="keyword">private</span> JTable jtable = <span class="keyword">new</span> JTable(dtable);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyFrame</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    <span class="keyword">this</span>.add(<span class="keyword">new</span> JScrollPane(jtable), <span class="string">&quot;Center&quot;</span>);</span><br><span class="line">    dtable.addRow(<span class="keyword">new</span> Object[dtable.getColumnCount()]);</span><br><span class="line">    <span class="keyword">int</span> now = dtable.getRowCount() - <span class="number">1</span>; <span class="comment">//当前行索引号</span></span><br><span class="line">    dtable.setValueAt(Str, rowi, coli);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span>[] selrow = jtable.getSelectedRows();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; selrow.length; i++)</span><br><span class="line">        dtable.removeRow(selrow[<span class="number">0</span>]);</span><br><span class="line">    &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="e-对话框提示"><a href="#e-对话框提示" class="headerlink" title="e. 对话框提示"></a>e. 对话框提示</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="string">&quot;内容&quot;</span>, <span class="string">&quot;标题&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="f-JMenuBar"><a href="#f-JMenuBar" class="headerlink" title="f.JMenuBar"></a>f.JMenuBar</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addMenu</span><span class="params">()</span></span>&#123;</span><br><span class="line">        javax.swing.JMenuBar menu = <span class="keyword">new</span> javax.swing.JMenuBar();</span><br><span class="line">        <span class="keyword">this</span>.setJMenuBar(menu);</span><br><span class="line"></span><br><span class="line">        String[] str = &#123;<span class="string">&quot;文件&quot;</span>, <span class="string">&quot;编辑&quot;</span>, <span class="string">&quot;查看&quot;</span>, <span class="string">&quot;帮助&quot;</span>&#125;;</span><br><span class="line">        String[][] itemstr = &#123;&#123;<span class="string">&quot;打开&quot;</span>, <span class="string">&quot;重命名&quot;</span>, <span class="string">&quot;删除&quot;</span>, <span class="string">&quot;刷新&quot;</span>, <span class="string">&quot;刷新&quot;</span>, <span class="string">&quot;搜索&quot;</span> ,<span class="string">&quot;→&quot;</span>, <span class="string">&quot;退出&quot;</span>&#125;, &#123;<span class="string">&quot;剪切&quot;</span>, <span class="string">&quot;复制&quot;</span>, <span class="string">&quot;黏贴&quot;</span>, <span class="string">&quot;→&quot;</span>, <span class="string">&quot;复制备份到文件夹&quot;</span>&#125;, &#123;<span class="string">&quot;返回上级&quot;</span>&#125;, &#123;&#125;&#125;;</span><br><span class="line">        JMenu[] Menu = <span class="keyword">new</span> JMenu[str.length];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length; i++)&#123;</span><br><span class="line">            Menu[i] = <span class="keyword">new</span> JMenu(str[i]);</span><br><span class="line">            menu.add(Menu[i]);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; itemstr[i].length; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(itemstr[i][j].equals(<span class="string">&quot;→&quot;</span>)) Menu[i].addSeparator();</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    JMenuItem item = <span class="keyword">new</span> JMenuItem(itemstr[i][j]);</span><br><span class="line">                    Menu[i].add(item);</span><br><span class="line">                    item.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        JMenu menu2 = <span class="keyword">new</span> JMenu(<span class="string">&quot;新建&quot;</span>);</span><br><span class="line">        Menu[<span class="number">0</span>].insert(menu2, <span class="number">0</span>);</span><br><span class="line">        String[] item2 = &#123;<span class="string">&quot;文件夹&quot;</span>, <span class="string">&quot;文本文档&quot;</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; item2.length; i++)&#123;</span><br><span class="line">            JMenuItem item = <span class="keyword">new</span> JMenuItem(item2[i]);</span><br><span class="line">            item.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">            menu2.add(item);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="2-线程"><a href="#2-线程" class="headerlink" title="2.线程"></a>2.线程</h2><h4 id="内部类版："><a href="#内部类版：" class="headerlink" title="内部类版："></a>内部类版：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">xc</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> sleeptime = <span class="number">1000</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                doing();</span><br><span class="line">            &#125;<span class="keyword">catch</span>(Exception ex)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Runnable接口版"><a href="#Runnable接口版" class="headerlink" title="Runnable接口版"></a>Runnable接口版</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> class <span class="title">MyFrame</span><span class="params">()</span> extends JFrame implements ActionListener, Runnable</span>&#123;</span><br><span class="line">    Thread xc = <span class="keyword">new</span> Thread(<span class="keyword">this</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                doing();</span><br><span class="line">            &#125;<span class="keyword">catch</span>(Exception ex)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="线程实例-Runnable版"><a href="#线程实例-Runnable版" class="headerlink" title="线程实例 - Runnable版"></a>线程实例 - Runnable版</h4><p>重点： a.<strong>JButton的actionPerformed</strong>怎么写 （start &amp; end按钮和Thread交互)</p>
+<p>​            b.<strong>run</strong>函数的实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.swing.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.ActionEvent;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.ActionListener;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XC</span> <span class="keyword">extends</span> <span class="title">JFrame</span> <span class="keyword">implements</span> <span class="title">Runnable</span>, <span class="title">ActionListener</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> JPanel p = <span class="keyword">new</span> JPanel(<span class="keyword">new</span> BorderLayout());</span><br><span class="line">    <span class="keyword">private</span> JTextField jf = <span class="keyword">new</span> JTextField(<span class="string">&quot;0.0&quot;</span>, <span class="number">4</span>);</span><br><span class="line">    <span class="keyword">private</span> JButton start = <span class="keyword">new</span> JButton(<span class="string">&quot;启动线程&quot;</span>), end = <span class="keyword">new</span> JButton(<span class="string">&quot;结束线程&quot;</span>);</span><br><span class="line">    <span class="keyword">private</span> Thread xc;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">XC</span><span class="params">()</span></span>&#123;</span><br><span class="line">        jf.setFont(<span class="keyword">new</span> Font(<span class="string">&quot;宋体&quot;</span>, Font.BOLD, <span class="number">50</span>));</span><br><span class="line">        jf.setEnabled(<span class="keyword">false</span>);</span><br><span class="line">        p.add(jf, <span class="string">&quot;Center&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        jf.setBackground(Color.BLUE);</span><br><span class="line">        JPanel temp = <span class="keyword">new</span> JPanel(<span class="keyword">new</span> FlowLayout(FlowLayout.CENTER));</span><br><span class="line">        temp.add(start); temp.add(end);</span><br><span class="line">        start.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">        end.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">        p.add(temp, <span class="string">&quot;South&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.setSize(<span class="number">800</span>,<span class="number">400</span>);</span><br><span class="line">        <span class="keyword">this</span>.setLayout(<span class="keyword">new</span> BorderLayout());</span><br><span class="line">        <span class="keyword">this</span>.add(p, <span class="string">&quot;Center&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.setVisible(<span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">this</span>.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//****</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sleeptime = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                <span class="keyword">double</span> tmp = Double.parseDouble(jf.getText());</span><br><span class="line">                tmp = tmp + <span class="number">0.11</span>;</span><br><span class="line">                System.out.println(tmp);</span><br><span class="line">                jf.setText(Double.toString((<span class="keyword">int</span>)(tmp*<span class="number">10</span>) / <span class="number">10.0</span>));</span><br><span class="line">                xc.sleep(sleeptime);</span><br><span class="line">            &#125;<span class="keyword">catch</span>(InterruptedException ex)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//***</span></span><br><span class="line">    <span class="comment">//***</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(e.getSource() == start)&#123;</span><br><span class="line">            <span class="keyword">if</span>(xc == <span class="keyword">null</span> || xc.getState() == Thread.State.TERMINATED) &#123;</span><br><span class="line">                xc = <span class="keyword">new</span> Thread(<span class="keyword">this</span>);</span><br><span class="line">                xc.start();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(e.getSource() == end)&#123;</span><br><span class="line">            <span class="keyword">if</span>(xc == <span class="keyword">null</span> || xc.getState() == Thread.State.TERMINATED) &#123;</span><br><span class="line">                JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="string">&quot;线程未启动！&quot;</span>,<span class="string">&quot;错误&quot;</span>,JOptionPane.ERROR_MESSAGE);</span><br><span class="line">                <span class="keyword">return</span> ;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(xc.getState() != Thread.State.TIMED_WAITING) <span class="keyword">return</span> ;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(xc.getState() == Thread.State.TIMED_WAITING) xc.interrupt();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//***</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> XC();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="多线程互斥运行-加互斥锁synchronized"><a href="#多线程互斥运行-加互斥锁synchronized" class="headerlink" title="多线程互斥运行(加互斥锁synchronized)"></a>多线程互斥运行(加互斥锁synchronized)</h4><p>实现方法：两个线程共用一个缓冲区<strong>buffer</strong></p>
+<p>设定初始指令<strong>order</strong>(让谁先开始占用资源)</p>
+<p>第一个线程运行完了之后， 将 <strong>order</strong> 指向另一个线程。</p>
+<p>以此类推。</p>
+<p>重要：当改变完order之后 调用this.notify() 唤醒另一个线程</p>
+<p>而当指令不指向自己时， 调用this.wait()使当前线程进入阻塞态。</p>
+<p><strong>对阻塞态的理解： run()方法停留不再运行。</strong></p>
+<h2 id="3-文件OI"><a href="#3-文件OI" class="headerlink" title="3.文件OI"></a>3.文件OI</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileOI</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Vector vec = <span class="keyword">new</span> Vector();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String[] readAllLines(String path) thorws EXception&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(path);</span><br><span class="line">        InputStream is = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">        InputStreamReader isr = <span class="keyword">new</span> InputStreamReader(is, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(isr);</span><br><span class="line">        InputStreamReader isw = <span class="keyword">null</span>;</span><br><span class="line">        </span><br><span class="line">        String str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">while</span>((str = br.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">            vec.add(str);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (String[]) vec.toArray(<span class="keyword">new</span> String[vec.size()]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(String path, String content)</span></span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(path);</span><br><span class="line">        FileOutPutStream fos = <span class="keyword">null</span>;</span><br><span class="line">        OutputStreamWriter osw = <span class="keyword">null</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(!file.exists())&#123;</span><br><span class="line">                <span class="keyword">boolean</span> hasFile = file.createNewFile();</span><br><span class="line">                <span class="keyword">if</span>(hasFile)&#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;file not exists, build a new one&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                fos = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                fos = <span class="keyword">new</span> FileOutputStream(file, <span class="keyword">true</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            osw = <span class="keyword">new</span> OutputStreamWriter(fos, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">            osw.write(content);</span><br><span class="line">            osw.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-数据库操作"><a href="#4-数据库操作" class="headerlink" title="4.数据库操作"></a>4.数据库操作</h2><h4 id="a-数据库连接"><a href="#a-数据库连接" class="headerlink" title="a.数据库连接"></a>a.数据库连接</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDB</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Connection conn;</span><br><span class="line">    <span class="keyword">private</span> Statement stmt;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyDB</span><span class="params">(String DBName)</span> <span class="keyword">throws</span> SQLException, ClassNotFoundException</span>&#123;</span><br><span class="line">        Class.forName(<span class="string">&quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot;</span>);</span><br><span class="line">        conn = DriverManager.getConnection(<span class="string">&quot;jdbc:sqlserver://localhost:49671; DatabaseName=student;user = sa;password=123456;&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.stmt = conn.createStatement();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="b-其他操作可以参照-Java-文件-MyDB-java-（query-amp-更新插入删除"><a href="#b-其他操作可以参照-Java-文件-MyDB-java-（query-amp-更新插入删除" class="headerlink" title="b. 其他操作可以参照 Java 文件 MyDB.java （query &amp; 更新插入删除)"></a>b. 其他操作可以参照 Java 文件 MyDB.java （query &amp; 更新插入删除)</h4><h2 id="5-异常处理"><a href="#5-异常处理" class="headerlink" title="5.异常处理"></a>5.异常处理</h2>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://m10.music.126.net/20201216133645/329a4fd44f5067bd1592e5291998b7c4/ymusic/0608/0408/0253/1b42bc20533b06cb281b59d00bf8ff0f.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://m10.music.126.net/20201216133757/fe457a0875c1245152f83a242a3d0221/ymusic/629b/d557/2d6e/20b6ec30cdc4afbf585bb5213b33ebd9.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='http://m10.music.126.net/20201216133834/a3e13099d6f02d8b9f74d029e65dfafc/ymusic/6dee/dfc1/5698/ee45a271736b4f9dc376917dd529452f.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='http://m10.music.126.net/20201216133834/c3f7b8b1447f9c394651cca48eaf3938/ymusic/30d9/3cd3/7181/212afc99bafa68f8fc89c010e5ae7de5.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

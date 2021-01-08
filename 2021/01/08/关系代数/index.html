@@ -5,12 +5,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tag: Java - leavecture&#39;s Blog</title>
+    <title>DBReview 关系代数 - leavecture&#39;s Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Leaf,"> 
-    <meta name="description" content="已经有在加油啦。,"> 
+    <meta name="description" content="已经有在加油啦。,仅包含4种关系代数中独有的运算符。
+
+选择运算符
+
+$\sigma_{F}(R)$ 其中F为一个布尔表达式，表示从关系模式R中选择出满足F关系的元组。
+PS：需要注意的是，在关系代数中，不同于t-s,"> 
     <meta name="author" content="Toeing_LeafIr/leavecture"> 
     <link rel="alternative" href="atom.xml" title="leavecture&#39;s Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/logo_.png"> 
@@ -35,114 +40,104 @@
 <body class="loading">
     <span id="config-title" style="display:none">leavecture&#39;s Blog</span>
     <div id="loader"></div>
-    <div class="nav">
-    <ul id="menu-menu" class="menu">
-        
-        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="//" title="首页" target="_blank" rel="noopener">首页</a>
-        </li>
-        
-        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="/categories/" title="分类" target="_blank" rel="noopener">分类</a>
-        </li>
-        
-        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="/tags/" title="标签" target="_blank" rel="noopener">标签</a>
-        </li>
-        
-        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="/archives/" title="归档" target="_blank" rel="noopener">归档</a>
-        </li>
-        
-        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="/about/" title="关于" target="_blank" rel="noopener">关于</a>
-        </li>
-        
-    </ul>
-	<span class="target"></span>
-	<center>
-	<div class="hitokoto">
-		<span class="typed" id="hitokoto" data-st="true"></span>
-	</div>
-	</center>
-	
-	<p class="footerlinks">
-		<a href="#" class="iconfont icon-null"></a>
-		
-            <a href="/" title="facebook" class="iconfont icon-facebook" target="_blank" rel="noopener"> </a>
-        
-            <a href="/" title="twitter" class="iconfont icon-twitter" target="_blank" rel="noopener"> </a>
-        
-            <a href="/" title="github" class="iconfont icon-github" target="_blank" rel="noopener"> </a>
-        
-            <a href="/img/logo_.png" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
-        
-            <a href="mailto:xxxx@gmail.com" title="email" class="iconfont icon-email" target="_blank" rel="noopener"> </a>
-        
-		<a href="#" class="iconfont icon-null"></a>
-	</p>
-	
-    <p id="copyright">
-        &copy; 2021 Toeing_LeafIr/leavecture.
-        <span> | </span>Powered by <a href="https://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
-        <span> | </span>Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a> by Fechin
-		
-    </p>
-</div>
-
-<div id="container">
-    
-<div id="screen">
-    <div id="mark">
-        <div class="layer" data-depth="0.4">
-            <img src="/img/kdl.jpg" id="cover" crossorigin="anonymous" width="1920" height="1080">
-        </div>
-    </div>
-    <div id="vibrant">
-        <svg viewBox="0 0 2880 1620" height="100%" preserveAspectRatio="xMaxYMax slice">
-            <polygon opacity="0.7" points="2000,1620 0,1620 0,0 600,0 "/>
-        </svg>
-        <div></div>
-    </div>
-    <div id="header">
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://toeing-leafir.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">DBReview 关系代数</h3>
+    <div class="social">
         <div>
-            <a class="image-logo" href="/"></a>
-			
-			<div class="iconfont icon-search switchsearch" href="/search/" title="搜索"></div>
-			
-            <div class="iconfont icon-menu switchmenu"></div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
         </div>
     </div>
-    
-    <div id="post0">
-        <p>十二月 30, 2020</p>
-        <h2><a href="/2020/12/30/java%E5%B0%8F%E6%80%BB%E7%BB%93/" title="关于Java Swing组件、线程、数据库操作、文件OI" class="posttitle">关于Java Swing组件、线程、数据库操作、文件OI</a></h2>
-        <p class="summary">1.Swing界面基本内容a. 基本Frame设置 &amp; 布局12345678910public MyFra...</p>
-    </div>
-    
+    <div class="scrollbar"></div>
 </div>
 
-    <div id="primary">
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">DBReview 关系代数</h1>
+        <div class="stuff">
+            <span>一月 08, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0/" rel="tag">关系代数</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>仅包含4种关系代数中独有的运算符。</p>
+<ul>
+<li>选择运算符</li>
+</ul>
+<p>$\sigma_{F}(R)$ 其中F为一个布尔表达式，表示从关系模式R中选择出满足F关系的元组。</p>
+<p>PS：需要注意的是，在关系代数中，不同于t-sql语言，表达且、或、非等含义需要使用逻辑代数中的符号如$\and$ 、 $\or$ 、 $\neg$的符号, 而不等于则表示为$&lt;&gt;$。</p>
+<ul>
+<li>投影运算符</li>
+</ul>
+<p>$\Pi_{e_1,e_2…e_n}(R)$ 表示取出关系R中的一些列。</p>
+<ul>
+<li>连接运算符</li>
+</ul>
+<p>$A \bowtie B$ 在连接运算符下方写连接条件 $A \theta B$  表示按条件对表进行连接。</p>
+<p>而若不写条件则为自然连接，将按照相同的属性列进行连接并在结果中消除相同的属性列。</p>
+<ul>
+<li>除运算</li>
+</ul>
+<p>$A \div B$ 形象的理解如此： </p>
+<p>A中含有 X Y Z三个属性组，而B中含有 Y、Z、W、……等许多列（不包含X）</p>
+<p>A ÷ B的结果为：对于A中与B中相同的几个属性列</p>
+<p>若A中的属性组X <strong>所对应</strong> 的取值 <strong>覆盖</strong>了 B中相同的属性列 的取值，则A中的相应属性组被加入到结果的一部分。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://m10.music.126.net/20201216133645/329a4fd44f5067bd1592e5291998b7c4/ymusic/0608/0408/0253/1b42bc20533b06cb281b59d00bf8ff0f.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://m10.music.126.net/20201216133757/fe457a0875c1245152f83a242a3d0221/ymusic/629b/d557/2d6e/20b6ec30cdc4afbf585bb5213b33ebd9.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='http://m10.music.126.net/20201216133834/a3e13099d6f02d8b9f74d029e65dfafc/ymusic/6dee/dfc1/5698/ee45a271736b4f9dc376917dd529452f.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='http://m10.music.126.net/20201216133834/c3f7b8b1447f9c394651cca48eaf3938/ymusic/30d9/3cd3/7181/212afc99bafa68f8fc89c010e5ae7de5.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
         
-<div class="post">
-    <a href="/2020/12/16/Java%E8%BF%9E%E6%8E%A5SqlServer%E7%9A%84%E8%8B%A5%E5%B9%B2%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E7%AD%94/" title="Java连接Sql-Server的一些问题">
-        <img src="/img/11.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>十二月 16, 2020</p>
-        <h3><a href="/2020/12/16/Java%E8%BF%9E%E6%8E%A5SqlServer%E7%9A%84%E8%8B%A5%E5%B9%B2%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E7%AD%94/" title="Java连接Sql-Server的一些问题" class="posttitle">Java连接Sql-Server的一些问题</a></h3>
-        <p>12345678910111213public class MyDB&#123;    private Connection conn;    priva...</p>
-    </div>
-</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
 </div>
-<div id="preview"></div>
 
 
-
+    </div>
+</div>
 </body>
 
 <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>

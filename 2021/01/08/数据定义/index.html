@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DBReview Definition Of Data - leavecture&#39;s Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Leaf,"> 
+    <meta name="description" content="已经有在加油啦。,a.模式
+123456789--1.定义/创建模式create schema NameOfSchema authorization NameOfUser--一个模式类似于Cpp中的Namespace,"> 
+    <meta name="author" content="Toeing_LeafIr/leavecture"> 
+    <link rel="alternative" href="atom.xml" title="leavecture&#39;s Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/logo_.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">leavecture&#39;s Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://toeing-leafir.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">DBReview Definition Of Data</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">DBReview Definition Of Data</h1>
+        <div class="stuff">
+            <span>一月 08, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>a.模式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--1.定义/创建模式</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">schema</span> NameOfSchema authorization NameOfUser</span><br><span class="line"><span class="comment">--一个模式类似于Cpp中的Namespace，其中可以进一步定义表、索引、视图</span></span><br><span class="line"><span class="comment">--而建表、索引、视图将在默认模式下进行(如果不显式指定的话)</span></span><br><span class="line"><span class="comment">--对应了三级模式中的模式部分(即内模式 - 模式 - 外模式(对应表结构))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--2.删除模式</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">schema</span> NameOfSchema &lt;<span class="keyword">cascade</span>/restrict&gt;</span><br><span class="line"><span class="comment">--cascade级联删除模式下的一切 而restrict将拒绝级联删除。</span></span><br></pre></td></tr></table></figure>
+
+<p>b.表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">Name</span>(</span><br><span class="line">NameCol1 DataType ColCondition,</span><br><span class="line">NameCol2 DataType ColCondition,</span><br><span class="line">    TableCheck(),</span><br><span class="line">    ……</span><br><span class="line">)</span><br><span class="line"><span class="comment">--2.修改表</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> NameOfTable</span><br><span class="line">[<span class="keyword">add</span> [<span class="keyword">Column</span>] <span class="keyword">Name</span> DataType [<span class="keyword">Check</span>]] <span class="comment">--添加新列</span></span><br><span class="line">[<span class="keyword">add</span> <span class="keyword">constraint</span> <span class="keyword">Name</span> <span class="keyword">Check</span>] <span class="comment">--添加新约束</span></span><br><span class="line">[<span class="keyword">drop</span> [<span class="keyword">column</span>] <span class="keyword">Name</span> [<span class="keyword">cascade</span>]] <span class="comment">--删除列</span></span><br><span class="line">[<span class="keyword">drop</span> <span class="keyword">constraint</span> <span class="keyword">Name</span> [<span class="keyword">cascade</span>]] <span class="comment">--删除约束</span></span><br><span class="line">[<span class="keyword">alter</span> <span class="keyword">column</span> <span class="keyword">Name</span> DataType]	<span class="comment">--改变原有列</span></span><br><span class="line">e.g.</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> c1 <span class="keyword">unique</span>(sdept)</span><br><span class="line"><span class="comment">--对列和约束进行各种操作 &amp; 除了修改约束需要删除后添加来进行</span></span><br><span class="line"><span class="comment">--特例：</span></span><br><span class="line"><span class="comment">--1.添加not null/null约束</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">Name</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">column</span> <span class="keyword">Name</span> <span class="keyword">not</span> <span class="literal">null</span> </span><br><span class="line"><span class="comment">--2.default约束</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">Name</span></span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> c2 <span class="keyword">default</span> <span class="keyword">Values</span> <span class="keyword">for</span> NameOfColumn</span><br><span class="line"></span><br><span class="line"><span class="comment">--3.删除表</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> <span class="keyword">Name</span> [<span class="keyword">cascade</span>]</span><br></pre></td></tr></table></figure>
+
+<p>c.索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> [<span class="keyword">unique</span>][cluster] <span class="keyword">index</span> <span class="keyword">Name</span></span><br><span class="line"><span class="keyword">on</span> tableName([colname [<span class="keyword">asc</span>/<span class="keyword">desc</span>]]),……</span><br><span class="line">e.g.:</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> <span class="keyword">index</span> StuSno <span class="keyword">on</span> student(sno) <span class="keyword">asc</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> <span class="keyword">index</span> CouCno <span class="keyword">on</span> course(cno) <span class="keyword">desc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--修改索引名</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">index</span> OldName <span class="keyword">rename</span> <span class="keyword">to</span> NewName</span><br><span class="line"><span class="comment">--删除索引</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">index</span> <span class="keyword">Name</span></span><br></pre></td></tr></table></figure>
+
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://m10.music.126.net/20201216133645/329a4fd44f5067bd1592e5291998b7c4/ymusic/0608/0408/0253/1b42bc20533b06cb281b59d00bf8ff0f.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://m10.music.126.net/20201216133757/fe457a0875c1245152f83a242a3d0221/ymusic/629b/d557/2d6e/20b6ec30cdc4afbf585bb5213b33ebd9.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='http://m10.music.126.net/20201216133834/a3e13099d6f02d8b9f74d029e65dfafc/ymusic/6dee/dfc1/5698/ee45a271736b4f9dc376917dd529452f.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='http://m10.music.126.net/20201216133834/c3f7b8b1447f9c394651cca48eaf3938/ymusic/30d9/3cd3/7181/212afc99bafa68f8fc89c010e5ae7de5.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

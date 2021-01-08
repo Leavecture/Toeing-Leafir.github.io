@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DBReview trigger - leavecture&#39;s Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Leaf,"> 
+    <meta name="description" content="已经有在加油啦。,触发器总结123456create trigger tri_on tableName/ViewNamefor/instead of update, insert, deleteas begin	sq,"> 
+    <meta name="author" content="Toeing_LeafIr/leavecture"> 
+    <link rel="alternative" href="atom.xml" title="leavecture&#39;s Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/logo_.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">leavecture&#39;s Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://toeing-leafir.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">DBReview trigger</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">DBReview trigger</h1>
+        <div class="stuff">
+            <span>一月 08, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/trigger/" rel="tag">trigger</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h3 id="触发器总结"><a href="#触发器总结" class="headerlink" title="触发器总结"></a>触发器总结</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> tri_</span><br><span class="line"><span class="keyword">on</span> tableName/ViewName</span><br><span class="line"><span class="keyword">for</span>/instead <span class="keyword">of</span> <span class="keyword">update</span>, <span class="keyword">insert</span>, <span class="keyword">delete</span></span><br><span class="line"><span class="keyword">as</span> <span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">sql</span>-<span class="keyword">Statement</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="实验六"><a href="#实验六" class="headerlink" title="实验六"></a>实验六</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">---1.	将stu数据库中student表的sno定义为主键；</span></span><br><span class="line"><span class="keyword">use</span> stu</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> c1 primary <span class="keyword">key</span>(sno)</span><br><span class="line"><span class="comment">--2.	将数据库stu的表course的cno字段定义为主键，约束名称为cno_pk;</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> course</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> cno_pk primary <span class="keyword">key</span>(cno)</span><br><span class="line"><span class="comment">--3.	为表course中的字段cname添加唯一值约束；</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> course</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> c2 <span class="keyword">unique</span>(cname)</span><br><span class="line"><span class="comment">--4.	将数据库stu的表sc的sno及cno字段组合定义为主键，约束名称为sc_pk;</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> sc</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> sc_pk primary <span class="keyword">key</span>(sno, cno)</span><br><span class="line"><span class="comment">--5.	对于数据表sc的sno、cno字段定义为外码，使之与表student的主码sno及表course的主码cno对应，实现如下参照完整性：</span></span><br><span class="line"><span class="comment">--1)	删除student表中记录的同时删除sc表中与该记录sno字段值相同的记录；</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> sc</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> fk <span class="keyword">foreign</span> <span class="keyword">key</span>(sno) <span class="keyword">references</span> student(sno)</span><br><span class="line"><span class="keyword">on</span> <span class="keyword">delete</span> <span class="keyword">cascade</span></span><br><span class="line"><span class="comment">--2)	修改student表某记录的sno时，若sc表中与该字段值对应的有若干条记录，则拒绝修改；</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> sc</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> fk foreigin <span class="keyword">key</span>(sno) <span class="keyword">references</span> student(sno)</span><br><span class="line"><span class="keyword">on</span> <span class="keyword">delete</span> <span class="keyword">no</span> <span class="keyword">action</span></span><br><span class="line"><span class="comment">--3)	修改course表cno字段值时，该字段在sc表中的对应值也应修改；</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> sc</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> fk2 <span class="keyword">foreign</span> <span class="keyword">key</span>(cno) <span class="keyword">references</span> course(cno)</span><br><span class="line"><span class="keyword">on</span> <span class="keyword">update</span> <span class="keyword">cascade</span></span><br><span class="line"><span class="comment">--4)	删除course表一条记录时，若该字段在在sc表中存在，则删除该字段对应的记录；</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> sc</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> fk2 <span class="keyword">foreign</span> <span class="keyword">key</span>(cno) <span class="keyword">references</span> course(cno)</span><br><span class="line"><span class="keyword">on</span> <span class="keyword">delete</span> <span class="keyword">cascade</span></span><br><span class="line"><span class="comment">--5)	向sc表添加记录时，如果该记录的sno字段的值在student中不存在，则拒绝插入；</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--6.	定义check约束，要求学生学号sno必须为9位数字字符，且不能以0开头，第二三位皆为0；</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> STUDENT </span><br><span class="line"><span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> C1 <span class="keyword">CHECK</span>(SNO <span class="keyword">LIKE</span> <span class="string">&#x27;[1-9]00[0-9][0-9][0-9][0-9][0-9][0-9]&#x27;</span>)</span><br><span class="line"><span class="comment">--7.	定义stu数据库中student表中学生年龄值在16-25范围内；</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> c <span class="keyword">check</span>(sage <span class="keyword">between</span> <span class="number">16</span> <span class="keyword">and</span> <span class="number">25</span>)</span><br><span class="line"><span class="comment">--8.	定义stu数据库中student表中学生姓名长度在2-8之间；</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> c2 <span class="keyword">check</span>(<span class="keyword">len</span>(sname) <span class="keyword">between</span> <span class="number">2</span> <span class="keyword">and</span> <span class="number">8</span>)</span><br><span class="line"><span class="comment">--9.	定义stu数据库中student表中学生性别列中只能输入“男”或“女”；</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> c3 <span class="keyword">check</span>(ssex = <span class="string">&#x27;男&#x27;</span> <span class="keyword">or</span> ssex = <span class="string">&#x27;女&#x27;</span>)</span><br><span class="line"><span class="comment">--10.	定义stu数据库student表中学生年龄值默认值为20；</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> c3 <span class="keyword">default</span> <span class="number">20</span> <span class="keyword">for</span> sage</span><br><span class="line"><span class="comment">--11.	修改student表学生的年龄值约束可以为15-30范围内；</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">drop</span> <span class="keyword">constraint</span> c</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">constraint</span> c <span class="keyword">check</span>(sage <span class="keyword">between</span> <span class="number">15</span> <span class="keyword">and</span> <span class="number">30</span>)</span><br><span class="line"><span class="comment">--12.	删除上述唯一值约束、外键约束及check约束；</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">!!!!</span><br><span class="line">触发器的题认真看认真做。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--13.	设计触发器实现如果一个学生转专业了，那么输出一条信息显示该学生各门课程的平均分</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> trans_dept <span class="keyword">on</span> student</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">update</span></span><br><span class="line"><span class="keyword">as</span> </span><br><span class="line"><span class="keyword">if</span> <span class="keyword">update</span>(sdept) <span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">declare</span> @avgg <span class="built_in">numeric</span>(<span class="number">4</span>, <span class="number">1</span>)</span><br><span class="line">	<span class="keyword">select</span> @avgg = <span class="keyword">avg</span>(grade)</span><br><span class="line">	<span class="keyword">from</span> sc <span class="keyword">join</span> inserted <span class="keyword">on</span> (sc.sno = inserted.sno)</span><br><span class="line">	</span><br><span class="line">	print <span class="string">&#x27;该学生的平均分为:&#x27;</span> + <span class="keyword">cast</span>(@avgg <span class="keyword">as</span> <span class="built_in">char</span>(<span class="number">10</span>))</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> trans_dept <span class="keyword">on</span> student</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">update</span></span><br><span class="line"><span class="keyword">as</span> <span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">declare</span> @sno <span class="built_in">char</span>(<span class="number">20</span>)</span><br><span class="line">	<span class="keyword">declare</span> @oldsdept <span class="built_in">char</span>(<span class="number">20</span>)</span><br><span class="line">	<span class="keyword">declare</span> @newsdept <span class="built_in">char</span>(<span class="number">20</span>)</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">select</span> @sno = sno, @newsdept = sdept</span><br><span class="line">	<span class="keyword">from</span> inserted</span><br><span class="line">	<span class="keyword">select</span> @oldsdept = sdept <span class="keyword">from</span> deleted</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(@oldsdept &lt;&gt; @newsdept) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">declare</span> @avgg <span class="built_in">numeric</span>(<span class="number">4</span>, <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">select</span> @avgg = <span class="keyword">avg</span>(grade)</span><br><span class="line">		<span class="keyword">from</span> sc</span><br><span class="line">		<span class="keyword">where</span> sno = @sno</span><br><span class="line">		print @sno + <span class="string">&#x27;的平均成绩为&#x27;</span> + <span class="keyword">cast</span>(@avgg <span class="keyword">as</span> <span class="built_in">char</span>(<span class="number">20</span>))</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--14.	设计触发器实现如果成绩被修改了20分以上，则输出提示信息“修改成绩超过20分，请慎重”。</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> update_grade <span class="keyword">on</span> sc</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">update</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">update</span>(grade) <span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">declare</span> @oldgrade <span class="built_in">float</span></span><br><span class="line">	<span class="keyword">declare</span> @newgrade <span class="built_in">float</span></span><br><span class="line">	<span class="keyword">select</span> @oldgrade = grade <span class="keyword">from</span> deleted</span><br><span class="line">	<span class="keyword">select</span> @newgrade = grade <span class="keyword">from</span> inserted</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">abs</span>(@newgrade - @oldgrade) &gt; <span class="number">20</span>)</span><br><span class="line">		print <span class="string">&#x27;修改成绩超过20分，请慎重&#x27;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> Update_grade <span class="keyword">on</span> sc</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">update</span></span><br><span class="line"><span class="keyword">as</span> <span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">declare</span> @newgrade <span class="built_in">int</span>, @oldgrade <span class="built_in">int</span></span><br><span class="line">	<span class="keyword">select</span> @newgrade = grade <span class="keyword">from</span> inserted</span><br><span class="line">	<span class="keyword">select</span> @oldgrade = grade <span class="keyword">from</span> deleted</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(@newgrade - @oldgrade &gt; <span class="number">20</span> <span class="keyword">or</span> @oldgrade - @newgrade &gt; <span class="number">20</span>)</span><br><span class="line">		print <span class="string">&#x27;修改成绩超过20分，请慎重&#x27;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">--QAQ做错了</span></span><br><span class="line"><span class="comment">--15. 在student表中增加一列total,表示学生选课总门数，初始值为0。定义一个触发器，实现如下完整性约束：当向SC表插入选课记录时，自动更新student表对应学号的total值,考虑成批插入数据的情况。</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student</span><br><span class="line"><span class="keyword">add</span> total <span class="built_in">int</span> <span class="keyword">default</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> student</span><br><span class="line"><span class="keyword">set</span> total = total + (<span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> sc <span class="keyword">where</span> student.sno = sc.sno)</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> Check_total_course <span class="keyword">on</span> sc</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">insert</span></span><br><span class="line"><span class="keyword">as</span> <span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">update</span> student</span><br><span class="line">	<span class="keyword">set</span> total = total + (<span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> inserted <span class="keyword">where</span> student.sno = inserted.sno)</span><br><span class="line">	<span class="keyword">where</span> sno <span class="keyword">in</span> (</span><br><span class="line">    	<span class="keyword">select</span> sno</span><br><span class="line">        <span class="keyword">from</span> inserted</span><br><span class="line">    )</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student</span><br><span class="line"><span class="keyword">add</span> total <span class="built_in">int</span> <span class="keyword">default</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> upd_stu_tot <span class="keyword">on</span> sc</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">insert</span></span><br><span class="line"><span class="keyword">as</span> <span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">update</span> student</span><br><span class="line">	<span class="keyword">set</span> total = total + (<span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> inserted <span class="keyword">where</span> sno = student.sno)</span><br><span class="line">	<span class="keyword">where</span> sno <span class="keyword">in</span> (</span><br><span class="line">    	<span class="keyword">select</span> sno</span><br><span class="line">        <span class="keyword">from</span> inserted</span><br><span class="line">    )</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">--16.设计一触发器，约束数据库系统课程的课容量为120。</span></span><br><span class="line"><span class="number">16</span>．设有两个表：商品库存表（商品编号，商品名称，库存数量，库存单价，库存金额）；商品销售表（商品编号，商品名称，购货商号，销售数量，销售单价，销售金额）；设计一触发器实现如下业务规则：</span><br><span class="line">（<span class="number">1</span>）保证在商品库存表中插入的数据，库存金额 = 库存数量 * 库存单价。</span><br><span class="line">（<span class="number">2</span>）如果销售的商品不存在库存或者库存为零，则返回提示信息。否则自动减少商品库存表中对应商品的库存数量和库存金额。</span><br><span class="line">建表并验证触发器的执行。</span><br><span class="line"><span class="number">17</span>．建立教师表（教工编号，姓名，专业，职称，工资）和</span><br><span class="line">工资变化表（教工编号，原工资，新工资），设计触发器实现教授的工资不得低于<span class="number">4000</span>元，如果低于<span class="number">4000</span>元则自动改为<span class="number">4000</span>元。</span><br><span class="line"><span class="number">18.</span>	使用第<span class="number">17</span>题的两个表设计触发器实现如果教工的工资发生变化则向工资变化表插入一条记录，包含教工编号，原工资，新工资。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="有价值的一些题"><a href="#有价值的一些题" class="headerlink" title="有价值的一些题"></a>有价值的一些题</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">模糊字符串查询[0-9] [a-z] 等等</span><br><span class="line"><span class="comment">--6.	定义check约束，要求学生学号sno必须为9位数字字符，且不能以0开头，第二三位皆为0；</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> STUDENT </span><br><span class="line"><span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> C1 <span class="keyword">CHECK</span>(SNO <span class="keyword">LIKE</span> <span class="string">&#x27;[1-9]00[0-9][0-9][0-9][0-9][0-9][0-9]&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--13.学生转专业了输出平均成绩</span></span><br><span class="line"><span class="keyword">USE</span> STUDENT</span><br><span class="line"><span class="keyword">GO</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> A1</span><br><span class="line"><span class="keyword">ON</span> STUDENT</span><br><span class="line"><span class="keyword">FOR</span></span><br><span class="line"><span class="keyword">UPDATE</span></span><br><span class="line"><span class="keyword">AS</span> </span><br><span class="line"><span class="keyword">IF</span> <span class="keyword">UPDATE</span>(SDEPT)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">DECLARE</span> @<span class="keyword">AVG</span> <span class="built_in">NUMERIC</span>(<span class="number">4</span>,<span class="number">1</span>),@SNO <span class="built_in">CHAR</span>(<span class="number">9</span>)</span><br><span class="line"><span class="keyword">SELECT</span> @SNO=(<span class="keyword">SELECT</span> SNO <span class="keyword">FROM</span> DELETED)</span><br><span class="line"><span class="keyword">SELECT</span> @<span class="keyword">AVG</span>=(<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(GRADE) <span class="keyword">FROM</span> SC <span class="keyword">WHERE</span> SNO=@SNO) </span><br><span class="line">PRINT @SNO+<span class="string">&#x27;各门课的平均成绩&#x27;</span>+<span class="keyword">cast</span>(@<span class="keyword">AVG</span> <span class="keyword">as</span> <span class="built_in">CHAR</span>(<span class="number">5</span>))</span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"><span class="comment">--14.	设计触发器实现如果成绩被修改了20分以上，则输出提示信息“修改成绩超过20分，	请慎重”。</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> A2</span><br><span class="line"><span class="keyword">ON</span> SC</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">UPDATE</span></span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">IF</span> <span class="keyword">UPDATE</span>(GRADE)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">DECLARE</span> @<span class="keyword">OLD</span> <span class="built_in">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @<span class="keyword">NEW</span> <span class="built_in">INT</span></span><br><span class="line"><span class="keyword">SELECT</span> @<span class="keyword">OLD</span> = GRADE <span class="keyword">FROM</span> DELETED</span><br><span class="line"><span class="keyword">SELECT</span> @<span class="keyword">NEW</span> = GRADE <span class="keyword">FROM</span> INSERTED</span><br><span class="line"><span class="keyword">IF</span> <span class="keyword">abs</span>(@<span class="keyword">NEW</span>-@<span class="keyword">OLD</span>)&gt;=<span class="number">20</span></span><br><span class="line">PRINT<span class="string">&#x27;修改成绩超过20分，请慎重&#x27;</span></span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"><span class="comment">--增加一个触发器，当有课程插入sc时，student的total+相应数值，考虑成批插入</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> TRI_add_course </span><br><span class="line"><span class="keyword">ON</span> SC </span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">INSERT</span> </span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line">    <span class="keyword">UPDATE</span> student</span><br><span class="line">        <span class="keyword">SET</span> total = total + (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> INSERTED <span class="keyword">WHERE</span> sno = Student.sno)</span><br><span class="line">        <span class="keyword">WHERE</span> sno <span class="keyword">IN</span>( <span class="keyword">SELECT</span> Sno <span class="keyword">FROM</span> INSERTED )</span><br></pre></td></tr></table></figure>
+
+
+
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://m10.music.126.net/20201216133645/329a4fd44f5067bd1592e5291998b7c4/ymusic/0608/0408/0253/1b42bc20533b06cb281b59d00bf8ff0f.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://m10.music.126.net/20201216133757/fe457a0875c1245152f83a242a3d0221/ymusic/629b/d557/2d6e/20b6ec30cdc4afbf585bb5213b33ebd9.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='http://m10.music.126.net/20201216133834/a3e13099d6f02d8b9f74d029e65dfafc/ymusic/6dee/dfc1/5698/ee45a271736b4f9dc376917dd529452f.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='http://m10.music.126.net/20201216133834/c3f7b8b1447f9c394651cca48eaf3938/ymusic/30d9/3cd3/7181/212afc99bafa68f8fc89c010e5ae7de5.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

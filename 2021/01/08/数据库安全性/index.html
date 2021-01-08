@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DBReview 安全性 - leavecture&#39;s Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Leaf,"> 
+    <meta name="description" content="已经有在加油啦。,a.视图机制
+123456create view NameOfView(NameOfColumn1, Name2)as select Statement[with check option]drop,"> 
+    <meta name="author" content="Toeing_LeafIr/leavecture"> 
+    <link rel="alternative" href="atom.xml" title="leavecture&#39;s Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/logo_.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">leavecture&#39;s Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://toeing-leafir.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">DBReview 安全性</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">DBReview 安全性</h1>
+        <div class="stuff">
+            <span>一月 08, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Safety/" rel="tag">Safety</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>a.视图机制</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> NameOfView(NameOfColumn1, Name2)</span><br><span class="line"><span class="keyword">as</span> </span><br><span class="line"><span class="keyword">select</span> <span class="keyword">Statement</span></span><br><span class="line">[<span class="keyword">with</span> <span class="keyword">check</span> <span class="keyword">option</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> NameOfView [<span class="keyword">cascade</span>]</span><br></pre></td></tr></table></figure>
+
+<p>&amp;视图可以像操作基本表一样对其进行查询、插入、更新等操作</p>
+<p>&amp;理所应当的，视图上也可以再建立一个视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> NameOfView</span><br><span class="line"><span class="keyword">set</span> expr</span><br><span class="line"><span class="keyword">where</span> Condition</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> NameOfView</span><br><span class="line"><span class="keyword">values</span>()/ <span class="keyword">select</span> <span class="keyword">Statement</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> NameOfView</span><br><span class="line"><span class="keyword">where</span> Condition</span><br></pre></td></tr></table></figure>
+
+<p>但并非所有视图都是可以被更新的：只有当对视图的操作是<strong>可以转化为对基本表的操作</strong>时，视图才是可更新的</p>
+<p>&amp;依此：行列子集视图总是可更新的。 // 而存在比如聚集函数产生的列的视图往往不可更新。</p>
+<p>b.用户创建、角色创建等</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--登录名创建</span></span><br><span class="line"><span class="keyword">create</span> login <span class="keyword">Name</span></span><br><span class="line"><span class="keyword">with</span> <span class="keyword">password</span>=<span class="string">&#x27;123&#x27;</span>,</span><br><span class="line">default_database = student</span><br><span class="line"></span><br><span class="line">exec sp_addlogin <span class="keyword">Name</span>, <span class="string">&#x27;1234&#x27;</span>, student</span><br><span class="line"><span class="comment">--用户创建</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="keyword">Name</span></span><br><span class="line"><span class="keyword">for</span> login 登录名</span><br><span class="line"></span><br><span class="line">exec  sp_adduser 登录名 <span class="keyword">Name</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--角色创建</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">role</span> <span class="keyword">Name</span></span><br><span class="line">e.g.</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">role</span> role1</span><br><span class="line"></span><br><span class="line">exec sp_addrolemember <span class="string">&#x27;role1&#x27;</span>, <span class="string">&#x27;zhangli&#x27;</span></span><br><span class="line">exec sp_addrolemember <span class="string">&#x27;role1&#x27;</span>, <span class="string">&#x27;role2&#x27;</span> <span class="comment">--将role2的权限赋给role1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>c.权限-sql支持的自主存取控制方法 (可以对许多权限进行操作)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> 权限,……</span><br><span class="line"><span class="keyword">on</span> <span class="keyword">table</span>/<span class="keyword">view</span>/.. <span class="keyword">Name</span></span><br><span class="line"><span class="keyword">to</span> <span class="keyword">User</span>,……</span><br><span class="line">[<span class="keyword">with</span> <span class="keyword">grant</span> <span class="keyword">option</span>]</span><br><span class="line"></span><br><span class="line">e.g.</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">create</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">to</span> user1, user2</span><br><span class="line"></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">insert</span>, <span class="keyword">update</span>, <span class="keyword">delete</span></span><br><span class="line"><span class="keyword">on</span> student <span class="keyword">to</span> user1, user2</span><br><span class="line"></span><br><span class="line">deny 权限 <span class="keyword">on</span> <span class="keyword">Table</span>/<span class="keyword">view</span>……</span><br><span class="line"><span class="keyword">to</span> <span class="keyword">User</span>,……</span><br><span class="line">[<span class="keyword">cascade</span>]</span><br><span class="line"></span><br><span class="line">e.g.</span><br><span class="line">deny <span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">on</span> user1</span><br><span class="line">deny <span class="keyword">insert</span> <span class="keyword">on</span> student <span class="keyword">to</span> user1</span><br><span class="line"></span><br><span class="line"><span class="keyword">revoke</span> 权限</span><br><span class="line"><span class="keyword">on</span> <span class="keyword">table</span>/<span class="keyword">view</span>……</span><br><span class="line"><span class="keyword">to</span> <span class="keyword">User</span>,……</span><br><span class="line">[<span class="keyword">cascade</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">1．创建一windows用户（名字自定），用sql语句建立windows验证模式的登录名。默认数据库为student</span><br><span class="line"><span class="comment">--2．用sql语句和系统存储过程建立登录名sqluser,密码为1234</span></span><br><span class="line"><span class="keyword">create</span> login sqluser <span class="keyword">with</span> <span class="keyword">password</span> = <span class="string">&#x27;1234&#x27;</span>,default_database = student</span><br><span class="line"></span><br><span class="line">exec sp_addlogin sqluser, <span class="string">&#x27;1234&#x27;</span>, student</span><br><span class="line"><span class="comment">--3．为student数据库新建用户u1，其登录名为sqluser。</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> u1 <span class="keyword">for</span> login sqluser</span><br><span class="line"></span><br><span class="line"><span class="comment">--4．新建登录usersf，并将其加入到sysadmin固定服务器角色中。</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> usersf</span><br><span class="line">exec sp_addsrvrolemember <span class="string">&#x27;usersf&#x27;</span>,<span class="string">&#x27;sysadmin&#x27;</span></span><br><span class="line"><span class="comment">--5．将student用户usersf（登录名为usersf）加入到db_owner角色中，使其全权负责该数据库,并验证其权限。</span></span><br><span class="line">exec sp_addrolemember <span class="string">&#x27;db_owner&#x27;</span>, <span class="string">&#x27;usersf&#x27;</span></span><br><span class="line"><span class="comment">--6．为SPJ数据库新建用户u2，u3，其登录名分别为u2，u3。</span></span><br><span class="line"><span class="keyword">create</span> login u3 <span class="keyword">with</span> <span class="keyword">password</span>=<span class="string">&#x27;123&#x27;</span></span><br><span class="line"><span class="keyword">create</span> login u2 <span class="keyword">with</span> <span class="keyword">password</span> = <span class="string">&#x27;1234&#x27;</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> u2 <span class="keyword">for</span> login u2</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> u3 <span class="keyword">for</span> login u3</span><br><span class="line"><span class="comment">--（1）授予用户u2对S表有SELECT 权，对P表颜色（COLOR）具有更新权限；</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span></span><br><span class="line"><span class="keyword">on</span> S <span class="keyword">to</span> u2</span><br><span class="line"><span class="keyword">with</span> <span class="keyword">grant</span> <span class="keyword">option</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">update</span></span><br><span class="line"><span class="keyword">on</span> P(COLOR) <span class="keyword">to</span> u2</span><br><span class="line"><span class="keyword">with</span> <span class="keyword">grant</span> <span class="keyword">option</span></span><br><span class="line"><span class="comment">--（2）u2将其拥有的权限授予u3；</span></span><br><span class="line"><span class="comment">--（3）用sql语句逐一验证u2、u3所获得的权限。</span></span><br><span class="line"><span class="comment">--（4）撤销用户u3所获得的权限，并验证。</span></span><br><span class="line"><span class="keyword">revoke</span> <span class="keyword">update</span></span><br><span class="line"><span class="keyword">on</span> P(COLOR) <span class="keyword">from</span> u3</span><br><span class="line"><span class="keyword">revoke</span> <span class="keyword">select</span> <span class="keyword">on</span> S <span class="keyword">from</span> u3</span><br><span class="line"><span class="comment">--7.在student数据库中建立角色operate,该角色具有对student和course表的查询权限；具有对表sc的插入和修改权限。</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">role</span> operate</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span> <span class="keyword">on</span> stduent <span class="keyword">to</span> operate <span class="comment">--不能一次性给两个对象授予权限</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span> <span class="keyword">on</span> course <span class="keyword">to</span> operate</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">insert</span>, <span class="keyword">update</span> <span class="keyword">on</span> sc <span class="keyword">to</span> operate</span><br><span class="line"></span><br><span class="line"><span class="comment">--8.拒绝用户u1对sc表的修改权限。</span></span><br><span class="line">deny <span class="keyword">update</span> <span class="keyword">on</span> sc <span class="keyword">to</span> u1</span><br><span class="line"><span class="comment">--9.使用存储过程将角色operate赋给用户u1,并用sql语句验证其权限。（特别验证u1对sc表的修改权限）</span></span><br><span class="line">exec sp_addrolemember operate, u1</span><br><span class="line"><span class="comment">--10. 在student数据库中创建架构（schema）teacher指定给用户teacher（也就是要先创建一个teacher用户）</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> teacher</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">schema</span> teacher authorization teacher</span><br><span class="line"><span class="comment">--11.	在已创建的teacher架构中创建“tea”表，表结构为（tno(编号), tname(姓名), tsd（专业）,tphone, te_mail）(数据类型和长度自己定义)，通过teacher架构为teacher用户设置查询权限，验证teacher用户对表tea是否具有select权限和delete权限，为什么？</span></span><br><span class="line"><span class="keyword">create</span> teacher.tea(</span><br><span class="line">	tno <span class="built_in">char</span>(<span class="number">20</span>) primary <span class="keyword">key</span>,</span><br><span class="line">    tname <span class="built_in">char</span>(<span class="number">20</span>),</span><br><span class="line">    tsd <span class="built_in">char</span>(<span class="number">20</span>),</span><br><span class="line">    tphone <span class="built_in">char</span>(<span class="number">20</span>),</span><br><span class="line">    te_mail <span class="built_in">char</span>(<span class="number">20</span>)</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://m10.music.126.net/20201216133645/329a4fd44f5067bd1592e5291998b7c4/ymusic/0608/0408/0253/1b42bc20533b06cb281b59d00bf8ff0f.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://m10.music.126.net/20201216133757/fe457a0875c1245152f83a242a3d0221/ymusic/629b/d557/2d6e/20b6ec30cdc4afbf585bb5213b33ebd9.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='http://m10.music.126.net/20201216133834/a3e13099d6f02d8b9f74d029e65dfafc/ymusic/6dee/dfc1/5698/ee45a271736b4f9dc376917dd529452f.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='http://m10.music.126.net/20201216133834/c3f7b8b1447f9c394651cca48eaf3938/ymusic/30d9/3cd3/7181/212afc99bafa68f8fc89c010e5ae7de5.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
